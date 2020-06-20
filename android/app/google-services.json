@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "532391395718",
+    "firebase_url": "https://medical-tracker-4d7d0.firebaseio.com",
+    "project_id": "medical-tracker-4d7d0",
+    "storage_bucket": "medical-tracker-4d7d0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:532391395718:android:5fcbd0e6dbca79c2c9ec07",
+        "android_client_info": {
+          "package_name": "zw.co.cytex.medicaltracker"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "532391395718-dv7d84flo8ckaphicedfqbo3dpa7qudd.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "zw.co.cytex.medicaltracker",
+            "certificate_hash": "408d6ef2a0ef95ae80b335b4f0d7757d19b18819"
+          }
+        },
+        {
+          "client_id": "532391395718-umj1rj9deo0jt1si6c4o5i6hb5cdgf1l.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA7XEh5zfa4jyGnbBolhNhcM5hG0kwEErg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "532391395718-umj1rj9deo0jt1si6c4o5i6hb5cdgf1l.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
