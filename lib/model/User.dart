@@ -24,6 +24,7 @@ class User {
   String phonenumber;
   String address;
   String status;
+  String serviceId;
 
   User({
     this.userId,
@@ -33,7 +34,8 @@ class User {
     this.access,
     this.phonenumber,
     this.address,
-    this.status
+    this.status,
+    this.serviceId
   });
 
   factory User.fromJson(Map<String, dynamic> json) => new User(
@@ -44,7 +46,8 @@ class User {
       access: json["access"],
       phonenumber: json["phonenumber"],
       address: json["address"],
-      status: json["status"]
+      status: json["status"],
+      serviceId: json["serviceId"]
   );
 
   Map<String, dynamic> toJson() => {
@@ -55,7 +58,8 @@ class User {
     "access":access,
     "phonenumber":phonenumber,
     "address":address,
-    "status":status
+    "status":status,
+    "serviceId":serviceId
 
   };
 

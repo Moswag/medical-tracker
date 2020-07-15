@@ -3,6 +3,8 @@ import 'dart:async';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:medicaltracker/constants/constants.dart';
+import 'package:medicaltracker/ui/RootPage.dart';
+import 'package:medicaltracker/util/auth.dart';
 
 
 class SplashScreen extends StatefulWidget {
@@ -23,7 +25,13 @@ class SplashScreenState extends State<SplashScreen>
   }
 
   void navigationPage() {
-    Navigator.of(context).pushReplacementNamed(SIGN_IN);
+    //Navigator.of(context).pushReplacementNamed(SIGN_IN);
+    Navigator.push(
+        context,
+        MaterialPageRoute(
+        builder: (context) => RootPage(
+      auth: Auth(),
+    )));
   }
 
   @override

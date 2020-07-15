@@ -8,7 +8,7 @@ class Validator {
       return null;
   }
 
-  String validateMobile(String value) {
+  static String validateMobile(String value) {
     String pattern = r'(^[0-9]*$)';
     RegExp regExp = new RegExp(pattern);
     if (value.length == 0) {

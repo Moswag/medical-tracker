@@ -5,6 +5,7 @@ class CustomTextField extends StatelessWidget {
   final String hint;
   final TextEditingController textEditingController;
   final TextInputType keyboardType;
+  final FormFieldValidator<String> validation;
   final bool obscureText;
   final IconData icon;
   double _width;
@@ -17,6 +18,7 @@ class CustomTextField extends StatelessWidget {
     {this.hint,
       this.textEditingController,
       this.keyboardType,
+      this.validation,
       this.icon,
       this.obscureText= false,
      });
@@ -33,7 +35,9 @@ class CustomTextField extends StatelessWidget {
       child: TextFormField(
         controller: textEditingController,
         keyboardType: keyboardType,
+        validator: validation,
         cursorColor: Colors.orange[200],
+        obscureText: obscureText,
         decoration: InputDecoration(
           prefixIcon: Icon(icon, color: Colors.orange[200], size: 20),
           hintText: hint,
