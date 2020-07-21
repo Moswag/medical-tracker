@@ -5,3 +5,6 @@ final String TABLE_SERVICES ='services';
 final String TABLE_BOOKED_SERVICES ='booked_services';
 final String TABLE_EMERGENCY ='emergencies';
 final String TABLE_PRESCRIPTION ='prescription';
+final String TABLE_MESSAGES ='messages';
+final String TABLE_TIPS ='tips';
+final String TABLE_PRESCRIPTION_FEEDBACK ='prescription_feedback';

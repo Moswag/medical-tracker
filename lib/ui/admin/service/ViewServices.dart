@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:medicaltracker/constants/AdminRoutes.dart';
+import 'package:medicaltracker/constants/color_const.dart';
 import 'package:medicaltracker/constants/db_constants.dart';
 import 'package:medicaltracker/model/MedicalService.dart';
 import 'package:medicaltracker/ui/admin/AdminDrawer.dart';
@@ -49,8 +50,11 @@ class _ViewServicesState extends State<ViewServices> {
     return Scaffold(
         drawer: AdminDrawer(),
         appBar: new AppBar(
-          title: new Text('Services'),
+          title: new Text('Services',
+            style: TextStyle(color: Colors.white),
+          ),
           centerTitle: true,
+          backgroundColor: primaryColor,
         ),
         backgroundColor: Color.fromRGBO(58, 66, 86, 1.0),
         bottomNavigationBar: makeBottom,

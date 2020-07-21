@@ -227,7 +227,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   Widget addressFormField() {
     return CustomTextField(
-      keyboardType: TextInputType.number,
+      keyboardType: TextInputType.text,
       icon: Icons.location_on,
       hint: "Address",
       textEditingController: addressController,

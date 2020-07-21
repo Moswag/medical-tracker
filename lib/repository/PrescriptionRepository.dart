@@ -22,25 +22,12 @@ class PrescriptionRepository {
 
 
 
-  static Stream <List<MedicalService>> getBookedServices() async*  {
-    yield* Firestore.instance
-        .collection(TABLE_BOOKED_SERVICES)
-        .snapshots()
-        .asyncMap((snapshot) async {
-      final list = snapshot.documents.map((doc) async {
-        return MedicalService.fromDocument(doc);
-      }).toList();
-      return await Future.wait(list);
-    });
-  }
-
-
-  static Future<bool> updateSchedule(BookedService bookedService) async {
+  static Future<bool> updatePrescription(Prescription prescription) async {
     try {
       Firestore.instance
-          .collection(TABLE_BOOKED_SERVICES)
-          .document(bookedService.id)
-          .updateData(bookedService.toJson())
+          .collection(TABLE_PRESCRIPTION)
+          .document(prescription.id)
+          .updateData(prescription.toJson())
           .then((result) {
         return true;
       }).catchError((onError) {

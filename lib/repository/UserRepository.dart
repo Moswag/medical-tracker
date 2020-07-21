@@ -4,10 +4,10 @@ import 'package:medicaltracker/model/User.dart';
 
 class UserRepository {
 
-  static userExist(String email) {
+  static userWithPhoneExist(String phoneNumber) {
     return Firestore.instance
         .collection(TABLE_USERS)
-        .where('email', isEqualTo: email)
+        .where('phonenumber', isEqualTo: phoneNumber)
         .limit(1)
         .getDocuments();
   }
@@ -20,5 +20,7 @@ class UserRepository {
     final user = User.fromDocument(document);
     return user;
   }
+
+
 
 }

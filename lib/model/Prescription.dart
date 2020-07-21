@@ -24,24 +24,24 @@ class Prescription {
   String endDate;
   String date;
   String status;
+  bool hasFeedBack;
 
-  Prescription({
-    this.id,
-    this.scheduleId,
-    this.patientId,
-    this.doctorId,
-    this.disease,
-    this.prescription,
-    this.numberOfCourses,
-    this.takingPerDay,
-    this.startDate,
-    this.endDate,
-    this.date,
-    this.status,
-  });
+  Prescription(
+      {this.id,
+      this.scheduleId,
+      this.patientId,
+      this.doctorId,
+      this.disease,
+      this.prescription,
+      this.numberOfCourses,
+      this.takingPerDay,
+      this.startDate,
+      this.endDate,
+      this.date,
+      this.status,
+      this.hasFeedBack});
 
-  factory Prescription.fromJson(Map<String, dynamic> json) =>
-      new Prescription(
+  factory Prescription.fromJson(Map<String, dynamic> json) => new Prescription(
         id: json["id"],
         scheduleId: json["scheduleId"],
         patientId: json["patientId"],
@@ -54,6 +54,7 @@ class Prescription {
         endDate: json["endDate"],
         date: json["date"],
         status: json["status"],
+        hasFeedBack: json["hasFeedBack"],
       );
 
   Map<String, dynamic> toJson() => {
@@ -69,6 +70,7 @@ class Prescription {
         "endDate": endDate,
         "date": date,
         "status": status,
+        "hasFeedBack": hasFeedBack,
       };
 
   factory Prescription.fromDocument(DocumentSnapshot doc) {

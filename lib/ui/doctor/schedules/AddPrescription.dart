@@ -68,9 +68,21 @@ class _ViewScheduleState extends State<AddPrescription> {
         prescription.id = sha1.convert(id).toString();
         PrescriptionRepository.addPrescription(prescription).then((onValue) {
           if (onValue) {
-            AlertDiag.showAlertDialog(context, 'Status',
-                'Prescription Successfully saved',
-                DoctorRoutes.VIEW_SCHEDULES);
+            //update doctor appointment
+            widget.bookedService.doctorStatus=STATUS_ATTENDED;
+            BookedServiceRepository.updateSchedule(widget.bookedService).then((onValue) {
+              if (onValue) {
+                AlertDiag.showAlertDialog(context, 'Status',
+                    'Prescription Successfully saved',
+                    DoctorRoutes.VIEW_SCHEDULES);
+              }else{
+                AlertDiag.showAlertDialog(
+                    context,
+                    'Status',
+                    'Failed to update schedule, please contact developer',
+                    DoctorRoutes.VIEW_SCHEDULES);
+              }
+            });
           } else {
             AlertDiag.showAlertDialog(
                 context,
@@ -149,7 +161,7 @@ class _ViewScheduleState extends State<AddPrescription> {
         prefixIcon: Padding(
           padding: EdgeInsets.only(left: 5.0),
           child: Icon(
-            Icons.person,
+            Icons.trip_origin,
             color: Colors.black,
           ), // icon is 48px widget.
         ), // icon is 48px widget.
@@ -168,7 +180,7 @@ class _ViewScheduleState extends State<AddPrescription> {
         prefixIcon: Padding(
           padding: EdgeInsets.only(left: 5.0),
           child: Icon(
-            Icons.person,
+            Icons.description,
             color: Colors.black,
           ), // icon is 48px widget.
         ), // icon is 48px widget.
@@ -182,13 +194,12 @@ class _ViewScheduleState extends State<AddPrescription> {
 
     final numOfCoursesField = TextFormField(
       keyboardType: TextInputType.number,
-      readOnly: true,
       controller: numOfCoursesController,
       decoration: InputDecoration(
         prefixIcon: Padding(
           padding: EdgeInsets.only(left: 5.0),
           child: Icon(
-            Icons.phone,
+            Icons.settings_system_daydream,
             color: Colors.black,
           ), // icon is 48px widget.
         ), // icon is 48px widget.
@@ -200,13 +211,12 @@ class _ViewScheduleState extends State<AddPrescription> {
 
     final perDayField = TextFormField(
       keyboardType: TextInputType.number,
-      readOnly: true,
       controller: perDayController,
       decoration: InputDecoration(
         prefixIcon: Padding(
           padding: EdgeInsets.only(left: 5.0),
           child: Icon(
-            Icons.phone,
+            Icons.star,
             color: Colors.black,
           ), // icon is 48px widget.
         ), // icon is 48px widget.
@@ -302,6 +312,7 @@ class _ViewScheduleState extends State<AddPrescription> {
                 startDate: DateTime.now().toString(),
                 date: DateTime.now().toString(),
                 endDate: endDateController.text,
+                hasFeedBack: false,
               );
 
               _addData(

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:medicaltracker/constants/color_const.dart';
 import 'package:medicaltracker/constants/constants.dart';
 import 'package:medicaltracker/constants/db_constants.dart';
 import 'package:medicaltracker/model/BookedService.dart';
@@ -50,8 +51,9 @@ class _ViewSchedulesState extends State<DoctorViewSchedules> {
       return Scaffold(
           drawer: DoctorDrawer(),
           appBar: new AppBar(
-            title: new Text('My Schedules'),
+            title: new Text('My Schedules',style: TextStyle(color: Colors.white),),
             centerTitle: true,
+            backgroundColor: primaryColor,
           ),
           backgroundColor: Color.fromRGBO(58, 66, 86, 1.0),
           body: WillPopScope(
@@ -147,7 +149,7 @@ class TaskList extends StatelessWidget {
                       style: TextStyle(
                           color: Colors.white, fontWeight: FontWeight.normal)),
                   subtitle: Text(
-                      'Date: ${bookedService.startTime.toString()} \nStatus: ${bookedService.status}',
+                      'Date: ${bookedService.startTime.toString()} \nStatus: ${bookedService.doctorStatus}',
                       style: TextStyle(
                           color: Colors.white, fontWeight: FontWeight.w300)),
                   onTap: () {

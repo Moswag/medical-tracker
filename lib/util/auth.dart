@@ -13,8 +13,8 @@ abstract class BaseAuth{
 }
 class Auth extends BaseAuth {
   static Future<String> signUp(String email, String password) async {
-    FirebaseUser user = await FirebaseAuth.instance
-        .createUserWithEmailAndPassword(email: email, password: password);
+    FirebaseUser user = (await FirebaseAuth.instance
+        .createUserWithEmailAndPassword(email: email, password: password)).user;   //edited
     return user.uid;
   }
 
@@ -56,10 +56,11 @@ class Auth extends BaseAuth {
   }
 
   static Future<String> signIn(String email, String password) async {
-    FirebaseUser user = await FirebaseAuth.instance
-        .signInWithEmailAndPassword(email: email, password: password);
-    return user.uid;
+    AuthResult result = (await FirebaseAuth.instance.signInWithEmailAndPassword(email: email, password: password));
+    print("Collected uid"+result.user.uid);
+    return result.user.uid;
   }
+
 
   static Future<User> getUserFirestore(String userId) async {
     if (userId != null) {

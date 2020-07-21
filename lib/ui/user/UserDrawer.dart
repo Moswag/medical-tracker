@@ -5,6 +5,7 @@ import 'package:medicaltracker/constants/color_const.dart';
 import 'package:medicaltracker/constants/constants.dart';
 import 'package:medicaltracker/model/State.dart';
 import 'package:medicaltracker/ui/signin.dart';
+import 'package:medicaltracker/ui/user/chat/UserViewChats.dart';
 import 'package:medicaltracker/util/auth.dart';
 import 'package:medicaltracker/util/state_widget.dart';
 
@@ -156,7 +157,19 @@ class UserDrawer extends StatelessWidget {
               title: new Text('Prescriptions'),
               onTap: () {
                 Navigator.pop(context);
-                Navigator.pushNamed(context,UserRoutes.VIEW_MY_EMERGENCIES);
+                Navigator.pushNamed(context,UserRoutes.VIEW_PRESCRIPTIONS);
+              },
+            ),
+            new ListTile(
+              leading: Icon(Icons.chat_bubble),
+              title: new Text('Chats'),
+              onTap: () {
+                Navigator.pop(context);
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (BuildContext ctx) =>
+                            UserViewChats(currentUserId: userId,)));
               },
             ),
             new ListTile(
@@ -164,7 +177,7 @@ class UserDrawer extends StatelessWidget {
               title: new Text('Health Tips'),
               onTap: () {
                 Navigator.pop(context);
-                Navigator.pushNamed(context, UserRoutes.VIEW_MY_EMERGENCIES);
+                Navigator.pushNamed(context, UserRoutes.VIEW_HEALTH_TIPS);
               },
             ),
             new ListTile(

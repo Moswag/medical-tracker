@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fluttertoast/fluttertoast.dart';
 import 'package:medicaltracker/constants/AdminRoutes.dart';
+import 'package:medicaltracker/constants/color_const.dart';
 import 'package:medicaltracker/constants/constants.dart';
 import 'package:medicaltracker/constants/db_constants.dart';
 import 'package:medicaltracker/model/State.dart';
@@ -46,8 +47,11 @@ class _UserViewDoctorsState extends State<UserViewDoctors> {
       return Scaffold(
           drawer: UserDrawer(),
           appBar: new AppBar(
-            title: new Text('Doctors'),
-            centerTitle: true,
+            title: new Text('Doctors',
+                style: TextStyle(color: Colors.white),
+          ),
+        centerTitle: true,
+        backgroundColor: primaryColor,
           ),
           backgroundColor: Color.fromRGBO(58, 66, 86, 1.0),
           body: WillPopScope(

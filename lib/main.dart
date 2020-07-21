@@ -10,14 +10,20 @@ import 'package:medicaltracker/ui/admin/emergency/AdminViewEmergencies.dart';
 import 'package:medicaltracker/ui/admin/patients/ViewPatients.dart';
 import 'package:medicaltracker/ui/admin/schedules/ViewSchedules.dart';
 import 'package:medicaltracker/ui/admin/service/ViewServices.dart';
+import 'package:medicaltracker/ui/admin/tips/ViewTips.dart';
+import 'package:medicaltracker/ui/doctor/history/EnterPatient.dart';
+import 'package:medicaltracker/ui/doctor/prescriptions/DoctorViewPrescriptions.dart';
 import 'package:medicaltracker/ui/doctor/schedules/DoctorViewSchedules.dart';
 import 'package:medicaltracker/ui/signin.dart';
 import 'package:medicaltracker/ui/signup.dart';
 import 'package:medicaltracker/ui/splashscreen.dart';
 import 'package:medicaltracker/ui/user/book_service/UserViewBookings.dart';
+import 'package:medicaltracker/ui/user/chat/UserViewChats.dart';
 import 'package:medicaltracker/ui/user/doctors/UserViewDoctors.dart';
 import 'package:medicaltracker/ui/user/emergencies/ViewEmergencies.dart';
+import 'package:medicaltracker/ui/user/prescriptions/ViewPrescriptions.dart';
 import 'package:medicaltracker/ui/user/services/UserViewServices.dart';
+import 'package:medicaltracker/ui/user/tips/ViewTips.dart';
 import 'package:medicaltracker/util/state_widget.dart';
 
 void main() {
@@ -51,18 +57,23 @@ class MyApp extends StatelessWidget {
         AdminRoutes.VIEW_SERVICES:  (BuildContext context) =>  ViewServices(),
         AdminRoutes.VIEW_SCHEDULES:  (BuildContext context) =>  ViewSchedules(),
         AdminRoutes.VIEW_EMERGENCIES:  (BuildContext context) =>  AdminViewEmergencies(),
+        AdminRoutes.VIEW_HEALTH_TIPS:  (BuildContext context) =>  AdminViewTips(),
 
         //user
         UserRoutes.VIEW_SERVICES:  (BuildContext context) =>  UserViewServices(),
         UserRoutes.BOOKED_SERVICES:  (BuildContext context) =>  UserViewBookings(),
         UserRoutes.VIEW_MY_EMERGENCIES:  (BuildContext context) =>  ViewEmergencies(),
         UserRoutes.VIEW_DOCTORS:  (BuildContext context) =>  UserViewDoctors(),
+        UserRoutes.VIEW_PRESCRIPTIONS:  (BuildContext context) =>  ViewPrescriptions(),
+        UserRoutes.VIEW_HEALTH_TIPS:  (BuildContext context) =>  ViewTips(),
+        UserRoutes.VIEW_CHATS:  (BuildContext context) =>  UserViewChats(),
 
 
         //doctor
         DoctorRoutes.VIEW_SCHEDULES:  (BuildContext context) =>  DoctorViewSchedules(),
-        DoctorRoutes.VIEW_PATIENT_HISTORY:  (BuildContext context) =>  DoctorViewSchedules(),
+        DoctorRoutes.VIEW_PATIENT_HISTORY:  (BuildContext context) =>  EnterPatient(),
         DoctorRoutes.VIEW_CHATS:  (BuildContext context) =>  DoctorViewSchedules(),
+        DoctorRoutes.VIEW_PRESCRIPTION:  (BuildContext context) =>  DoctorViewPrescriptions(),
 
       },
       initialRoute: SPLASH_SCREEN,

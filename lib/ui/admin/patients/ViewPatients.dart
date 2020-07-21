@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:medicaltracker/constants/color_const.dart';
 import 'package:medicaltracker/constants/constants.dart';
 import 'package:medicaltracker/constants/db_constants.dart';
 import 'package:medicaltracker/model/State.dart';
@@ -70,8 +71,11 @@ class _ViewPatientsState extends State<ViewPatients> {
       return Scaffold(
           drawer: AdminDrawer(),
           appBar: new AppBar(
-            title: new Text('Patients'),
+            title: new Text('Patients',
+              style: TextStyle(color: Colors.white),
+            ),
             centerTitle: true,
+            backgroundColor: primaryColor,
           ),
           backgroundColor: Color.fromRGBO(58, 66, 86, 1.0),
          // bottomNavigationBar: makeBottom,

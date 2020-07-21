@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:medicaltracker/constants/color_const.dart';
 import 'package:medicaltracker/constants/constants.dart';
 import 'package:medicaltracker/constants/db_constants.dart';
 import 'package:medicaltracker/model/State.dart';
@@ -11,9 +12,7 @@ import 'package:medicaltracker/ui/admin/admin/AddAdmin.dart';
 import 'package:medicaltracker/ui/signin.dart';
 import 'package:medicaltracker/util/state_widget.dart';
 
-
 class ViewAdmins extends StatefulWidget {
-
   @override
   State createState() => _ViewAdminsState();
 }
@@ -24,9 +23,7 @@ class _ViewAdminsState extends State<ViewAdmins> {
 
   @override
   Widget build(BuildContext context) {
-    appState = StateWidget
-        .of(context)
-        .state;
+    appState = StateWidget.of(context).state;
     if (!appState.isLoading &&
         (appState.firebaseUserAuth == null ||
             appState.user == null ||
@@ -52,8 +49,7 @@ class _ViewAdminsState extends State<ViewAdmins> {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (BuildContext ctx) =>
-                              AddAdmin()));
+                          builder: (BuildContext ctx) => AddAdmin()));
                 },
               )
             ],
@@ -64,8 +60,12 @@ class _ViewAdminsState extends State<ViewAdmins> {
       return Scaffold(
           drawer: AdminDrawer(),
           appBar: new AppBar(
-            title: new Text('Admins'),
+            title: new Text(
+              'Admins',
+              style: TextStyle(color: Colors.white),
+            ),
             centerTitle: true,
+            backgroundColor: primaryColor,
           ),
           backgroundColor: Color.fromRGBO(58, 66, 86, 1.0),
           bottomNavigationBar: makeBottom,
@@ -86,8 +86,8 @@ class _ViewAdminsState extends State<ViewAdmins> {
                             ConnectionState.waiting) {
                           return new Container(
                               child: Center(
-                                child: CircularProgressIndicator(),
-                              ));
+                            child: CircularProgressIndicator(),
+                          ));
                         } else {
                           if (snapshot.data.documents.length != null &&
                               snapshot.data.documents.length > 0) {
@@ -98,8 +98,7 @@ class _ViewAdminsState extends State<ViewAdmins> {
                           } else {
                             return Container(
                               child: Center(
-                                child: Text(
-                                    'No $ACCESS_ADMIN Added',
+                                child: Text('No $ACCESS_ADMIN Added',
                                     style: TextStyle(color: Colors.white)),
                               ),
                             );
@@ -112,14 +111,15 @@ class _ViewAdminsState extends State<ViewAdmins> {
               )));
     }
   }
-  Future<bool> onWillPop() async{
-    DateTime currentTime=DateTime.now();
 
-    bool backButton=backButtonPressedTime==null ||
-        currentTime.difference(backButtonPressedTime)>Duration(seconds: 3);
+  Future<bool> onWillPop() async {
+    DateTime currentTime = DateTime.now();
 
-    if(backButton){
-      backButtonPressedTime=currentTime;
+    bool backButton = backButtonPressedTime == null ||
+        currentTime.difference(backButtonPressedTime) > Duration(seconds: 3);
+
+    if (backButton) {
+      backButtonPressedTime = currentTime;
       Fluttertoast.showToast(
           msg: "Double click to exit app",
           toastLength: Toast.LENGTH_SHORT,
@@ -127,8 +127,7 @@ class _ViewAdminsState extends State<ViewAdmins> {
           timeInSecForIosWeb: 1,
           backgroundColor: Colors.black,
           textColor: Colors.white,
-          fontSize: 16.0
-      );
+          fontSize: 16.0);
       return false;
     }
     Navigator.pop(context, 1);
@@ -138,8 +137,10 @@ class _ViewAdminsState extends State<ViewAdmins> {
 
 class TaskList extends StatelessWidget {
   TaskList({this.document, this.userId});
+
   final List<DocumentSnapshot> document;
   final String userId;
+
   @override
   Widget build(BuildContext context) {
     ListView getNoteListView() {
@@ -147,22 +148,22 @@ class TaskList extends StatelessWidget {
       return ListView.builder(
         itemCount: document.length,
         itemBuilder: (BuildContext context, int position) {
-          User user=User.fromDocument(document[position]);
+          User user = User.fromDocument(document[position]);
 
-          if(userId==user.userId){
+          if (userId == user.userId) {
             return Container();
           }
-
 
           return Card(
               color: Colors.white,
               elevation: 2.0,
               child: Container(
                 decoration:
-                BoxDecoration(color: Color.fromRGBO(64, 75, 96, .9)),
+                    BoxDecoration(color: Color.fromRGBO(64, 75, 96, .9)),
                 child: ListTile(
                   leading: CircleAvatar(
-                      backgroundColor: Color.fromRGBO(58, 66, 86, 1.0), child: Icon(Icons.person)),
+                      backgroundColor: Color.fromRGBO(58, 66, 86, 1.0),
+                      child: Icon(Icons.person)),
                   title: Text('Name:  ${user.firstName} ${user.lastName}',
                       style: TextStyle(
                           color: Colors.white, fontWeight: FontWeight.normal)),
@@ -174,10 +175,13 @@ class TaskList extends StatelessWidget {
                     //to make the icon clickable and respond
                     child: Icon(Icons.delete, color: Colors.white, size: 25.0),
                     onTap: () {
-                      Firestore.instance.collection(TABLE_USERS).document(user.userId).delete();
+                      Firestore.instance
+                          .collection(TABLE_USERS)
+                          .document(user.userId)
+                          .delete();
 
-                      Scaffold.of(context).showSnackBar(
-                          new SnackBar(content: new Text('${user.access} Deleted')));
+                      Scaffold.of(context).showSnackBar(new SnackBar(
+                          content: new Text('${user.access} Deleted')));
                     },
                   ),
                   onTap: () {

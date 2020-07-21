@@ -2,6 +2,7 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:medicaltracker/constants/color_const.dart';
 import 'package:medicaltracker/constants/db_constants.dart';
 import 'package:medicaltracker/model/MedicalService.dart';
 import 'package:medicaltracker/model/User.dart';
@@ -32,6 +33,8 @@ class _UserViewServicesState extends State<UserViewServices> {
                   children: <Widget>[
                     CachedNetworkImage(
                       imageUrl: medicalService.imageUrl,
+                      width: 200,
+                      height: 120,
                       progressIndicatorBuilder: (context, url, downloadProgress) =>
                           Center(child:CircularProgressIndicator(value: downloadProgress.progress)),
                       errorWidget: (context, url, error) => Icon(Icons.error),
@@ -61,8 +64,11 @@ class _UserViewServicesState extends State<UserViewServices> {
     return Scaffold(
           drawer: UserDrawer(),
           appBar: new AppBar(
-            title: new Text('Services'),
-            centerTitle: true,
+            title: new Text('Services',
+                style: TextStyle(color: Colors.white),
+          ),
+      centerTitle: true,
+      backgroundColor: primaryColor,
           ),
           backgroundColor: Color.fromRGBO(58, 66, 86, 1.0),
 

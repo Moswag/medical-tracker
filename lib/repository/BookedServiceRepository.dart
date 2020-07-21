@@ -51,5 +51,13 @@ class BookedServiceRepository {
     }
   }
 
+  static Future<BookedService> getService(String serviceId) async {
+    final docRef = Firestore.instance
+        .collection(TABLE_BOOKED_SERVICES)
+        .document(serviceId);
+    final document = await docRef.get();
+    final service = BookedService.fromDocument(document);
+    return service;
+  }
 
 }

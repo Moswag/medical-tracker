@@ -5,6 +5,7 @@ import 'package:medicaltracker/constants/UserRoutes.dart';
 import 'package:medicaltracker/constants/color_const.dart';
 import 'package:medicaltracker/constants/constants.dart';
 import 'package:medicaltracker/model/State.dart';
+import 'package:medicaltracker/ui/doctor/chat/ViewChats.dart';
 import 'package:medicaltracker/ui/signin.dart';
 import 'package:medicaltracker/util/auth.dart';
 import 'package:medicaltracker/util/state_widget.dart';
@@ -128,11 +129,15 @@ class DoctorDrawer extends StatelessWidget {
               },
             ),
             new ListTile(
-              leading: Icon(Icons.person),
+              leading: Icon(Icons.chat),
               title: new Text('Chats'),
               onTap: () {
                 Navigator.of(context).pop();
-                Navigator.pushNamed(context,DoctorRoutes.VIEW_CHATS);
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (BuildContext ctx) =>
+                            DoctorViewChats(currentUserId: userId,)));
               },
             ),
 
@@ -142,6 +147,14 @@ class DoctorDrawer extends StatelessWidget {
               onTap: () {
                 Navigator.of(context).pop();
                 Navigator.pushNamed(context, DoctorRoutes.VIEW_PATIENT_HISTORY);
+              },
+            ),
+            new ListTile(
+              leading: Icon(Icons.description),
+              title: new Text('Prescriptions'),
+              onTap: () {
+                Navigator.of(context).pop();
+                Navigator.pushNamed(context, DoctorRoutes.VIEW_PRESCRIPTION);
               },
             ),
             new ListTile(

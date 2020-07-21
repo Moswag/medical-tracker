@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:fluttertoast/fluttertoast.dart';
+import 'package:medicaltracker/constants/color_const.dart';
 import 'package:medicaltracker/constants/constants.dart';
 import 'package:medicaltracker/constants/db_constants.dart';
 import 'package:medicaltracker/model/BookedService.dart';
@@ -47,8 +48,11 @@ class _UserViewBookingsState extends State<UserViewBookings> {
       return Scaffold(
           drawer: UserDrawer(),
           appBar: new AppBar(
-            title: new Text('My Bookings'),
+            title: new Text('My Bookings',
+              style: TextStyle(color: Colors.white),
+            ),
             centerTitle: true,
+            backgroundColor: primaryColor,
           ),
           backgroundColor: Color.fromRGBO(58, 66, 86, 1.0),
           body: WillPopScope(
